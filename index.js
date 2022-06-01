@@ -30,7 +30,7 @@ const cron = require('node-cron');
 
 
 app.use(router);
-app.use(cors({credentials:true, origin:["http://localhost:3000"]}));
+app.use(cors({credentials:true, origin:[clientEndPoint]}));
 app.options('*', cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json({limit: '50mb'}));   
