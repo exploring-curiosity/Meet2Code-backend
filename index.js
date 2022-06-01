@@ -15,7 +15,7 @@ const Room=require('./Schemas/room');
 const User=require('./Schemas/user');
 const Contest = require('./Schemas/Contest');
 const Question = require('./Schemas/QuestionTestcase');
-const { serverEndPoint } = require('./config');
+const { serverEndPoint, clientEndPoint } = require('./config');
 const { v4: uuid } = require('uuid');
 const cheerio = require("cheerio");
 // const {ExpressPeerServer} = require('peer');
@@ -85,7 +85,7 @@ let notLoggedin=(req,res,next)=>{
 const server = http.createServer(app);
 const io = socket(server,{cors: {
     cors: true,
-      origins: ["http://localhost:3000","192.168.0.13:3000","https://60a2be5a6ea5e300a1a9aca2--elegant-edison-5499d4.netlify.app"],
+      origins: [clientEndPoint],
       methods: ["GET", "POST"]
     }
 });
