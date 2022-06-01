@@ -43,7 +43,10 @@ app.use(session({
     name:"meet2codeCookie",
     cookie : {
         maxAge: 1000* 60 * 60 *24 * 365,
-        secure: false,
+        sameSite : "none",
+        secure: true,
+        domain: "meet2code.herokuapp.com",
+        httpOnly: true
     }
 
 }))
