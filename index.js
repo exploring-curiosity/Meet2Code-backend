@@ -44,7 +44,8 @@ app.use(session({
     cookie : {
           maxAge: 1000* 60 * 60 *24 * 365,
           secure:false,
-      }
+          sameSite:"none"
+    }
 
 }))
 app.enable('trust proxy');
