@@ -442,6 +442,7 @@ app.use('/oauth',oauth);
 app.use('/room',room);
 
 app.get('/getProblem/', async(req, res)=>{
+    res.set('Access-Control-Allow-Origin', '*');
 
     let {contest, id} = req.query
     try{
