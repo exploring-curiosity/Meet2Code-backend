@@ -31,8 +31,7 @@ let getGitUser=async(access_token)=>{
 }
 
 router.get('/isloggedin',async(req,res)=>{
-    
-    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     if(req.session.loggedin===true){
         res.status(200).json({user:req.session.user, loggedin:true})
     }
