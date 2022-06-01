@@ -3,10 +3,12 @@ const express=require("express");
       fetch=require("node-fetch");
       mongoose=require("mongoose");
       User=require("../Schemas/user");
+const { clientEndPoint} = require("../config");
 
 //Router to get additional permission for repository operations
 router.get('/oauth/repos',async(req,res)=>{
 
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     let {gitaccess}=req.session 
     if(gitaccess!==undefined && gitaccess!==null && gitaccess.fetched===true){      //If the resources are already fetched
         console.log("Present already")
@@ -25,6 +27,7 @@ router.get('/oauth/repos',async(req,res)=>{
 //Router to get repo info
 router.get('/repos',async(req,res)=>{
 
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     let {gitaccess}=req.session             //Get user git auth details
 
    

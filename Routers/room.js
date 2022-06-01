@@ -13,6 +13,7 @@ const { gitConfig , serverEndPoint, clientEndPoint} = require("../config");
 //Get room info
 router.get('/:id',async(req,res)=>{
 
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     let roomId=req.params.id
     let {user}=req.session
     let room=await Room.findOne({roomId:roomId})

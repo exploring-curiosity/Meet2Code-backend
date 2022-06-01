@@ -45,7 +45,7 @@ router.post('/logout',(req,res)=>{
 })
 
 router.get('/git',(req,res)=>{
-
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     if(req.session.loggedin===true){        //If user is already loggedin redirect to loginPage
         return res.redirect(`${clientEndPoint}`)
     }
@@ -53,6 +53,8 @@ router.get('/git',(req,res)=>{
 })
 
 router.get('/gitCallBack/getToken',async(req,res)=>{
+    
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     let {code}=req.query
     try{
         let resp=await getAccessToken(code)
@@ -87,6 +89,7 @@ router.get('/gitCallBack/getToken',async(req,res)=>{
 })
 
 router.get('/gitCallBack/getRepos',async(req,res)=>{
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     let {code}=req.query
     try{
         let resp=await getAccessToken(code)
@@ -104,6 +107,7 @@ router.get('/gitCallBack/getRepos',async(req,res)=>{
 
 
 router.get('/gitCallBack',(req,res)=>{
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     let {code}=req.query
     if(code===undefined){
         return res.redirect(`${clientEndPoint}`)

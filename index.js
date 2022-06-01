@@ -442,7 +442,7 @@ app.use('/oauth',oauth);
 app.use('/room',room);
 
 app.get('/getProblem/', async(req, res)=>{
-    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
 
     let {contest, id} = req.query
     try{
@@ -463,6 +463,7 @@ app.get('/getProblem/', async(req, res)=>{
 
 app.get('/codeforces/questions', async(req,res)=>{
 
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     let {tags} = req.query
     if(tags === undefined)
         tags = "2-sat"
@@ -482,6 +483,7 @@ app.get('/codeforces/questions', async(req,res)=>{
 });
 
 app.get('/publicRooms', async(req,res) => {
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
 
     const rooms = await Room.find().populate('host').populate('participants');
     let response = []
@@ -510,6 +512,7 @@ app.get('/publicRooms', async(req,res) => {
 });
 
 app.get('/getContests',async(req,res)=>{
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
 
     try{
         let contests = await Contest.find();
@@ -523,6 +526,7 @@ app.get('/getContests',async(req,res)=>{
 });
 
 app.get('/contestsSize', async(req,res)=>{
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     try{
         let count = await Contest.countDocuments();
         console.log(count);
@@ -535,6 +539,7 @@ app.get('/contestsSize', async(req,res)=>{
 });
 
 app.get('/questionTestcases', async(req,res)=>{
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
 
     let {contestId, questionId} = req.query
     try{
@@ -551,6 +556,7 @@ app.get('/questionTestcases', async(req,res)=>{
 
 
 app.get('/contest/:id', async(req,res) => {
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
 
     let contestId = req.params.id
     try{
@@ -586,7 +592,8 @@ app.post('/addScore/contest', async(req,res)=>{
 
 
 app.get('/leaderboard/:id', async(req,res) => {
-
+    
+    res.set('Access-Control-Allow-Origin', clientEndPoint);
     let contestId = req.params.id;
     let contest = await Contest.findOne({contestId : contestId});
 
