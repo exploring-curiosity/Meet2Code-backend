@@ -47,6 +47,7 @@ app.use(session({
       }
 
 }))
+app.enable('trust proxy');
 
 let loggedinUserDetails=(req,res,next)=>{
     let loggedin=0;
