@@ -1,4 +1,5 @@
 const express=require('express');
+const {clientEndPoint} = require('../config');
 const router = express.Router();
 
 router.get('/',(req,res)=>{
